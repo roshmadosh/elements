@@ -72,6 +72,8 @@ int main(int argc, char **argv) {
 		exit(EXIT_FAILURE);
 	}
 
+	munmap(addr, length + offset - page_offset);
+
 	close(fd);
 
 	exit(EXIT_SUCCESS);
