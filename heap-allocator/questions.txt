@@ -1,0 +1,4 @@
+What does it mean for Linux to "follow an optimistic memory allocation strategy"?  
+
+In glibc's malloc impl, why is `mmap(2)` used when the requested allocation is large?
+

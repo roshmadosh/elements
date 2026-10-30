@@ -1,20 +1,18 @@
 CC = gcc
-CFLAGS = -g -Iinclude
-objs = build/mmap.o 
-exec = my_mmap 
-
-${exec}: ${objs}
-	${CC} ${CFLAGS} $^ -o $@
-
-${objs}: build/%.o: src/%.c
-	mkdir -p $(dir $@)
-	${CC} ${CFLAGS} -c $^ -o $@
-
-clean:
-	rm -rf build/ ${exec} my_allocator
+CFLAGS = -g -Iinclude 
+malloc_trace = ./malloc_trace
+malloc_dbg_so = /usr/lib64/libc_malloc_debug.so.0
+exec=my_allocator
 
 alloc:
-	${CC} ${CFLAGS} main.c src/bump.c -o my_allocator
+	mkdir bin
+	${CC} ${CFLAGS} ${exec}.c src/bump.c -o bin/${exec}
+	MALLOC_TRACE=${malloc_trace} LD_PRELOAD=${malloc_dbg_so} ./bin/${exec}
+
+clean:
+	rm -rf build/ bin/ ${malloc_trace}
 
 debug:
-	gdb -q ./my_allocator
+	gdb -q ./bin/${exec}
+
+

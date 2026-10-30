@@ -4,14 +4,12 @@ Understand how a heap allocator works, and how to implement one.
 
 # Roadmap
 
-## 1. Build a bump allocator
+## Build a bump allocator
 
-- [ ] Obtain a fixed region of memory and return successive aligned portions of it. Initially, don't support freeing individual blocks.
-
-- [ ] Learn: alignment, pointer arithmetic, headers, overflow checks, and how an allocator manages its own metadata.
-
-- [ ] Done when: every valid allocation lies within the arena and is correctly aligned.
-
+### Resources
+- https://sourceware.org/glibc/wiki/MallocInternals
+- [glibc malloc.c](https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=malloc/malloc.c;hb=HEAD)
+- [Stanford CS107 Heap Allocator Assignment](https://web.stanford.edu/class/archive/cs/cs107/cs107.1222/assign6/)
 ## 2. Implement an implicit free list
 
 - [ ] Add block headers containing size and allocation status. Implement first-fit search, block splitting, free(), and reuse of freed blocks.
@@ -42,15 +40,12 @@ Understand how a heap allocator works, and how to implement one.
 
 - [ ] Learn: how to distinguish a theoretically attractive design from one that performs well in practice.
 
-# Resources
+# Other Resources
 
 1. Textbook: CSAPP by Bryant, O'Hallaron
 
-2. [Stanford CS107 Heap Allocator Assignment](https://web.stanford.edu/class/archive/cs/cs107/cs107.1222/assign6/)
-3. [Illinois CS341 Malloc Tutorial](https://cs341.cs.illinois.edu/coursebook/Malloc?utm_source=chatgpt.com)
-4. [ANU Lab: Building Dynamic Memory Allocators](https://comp.anu.edu.au/courses/comp2310/labs/05-malloc/?utm_source=chatgpt.com#outline)
-5. malloc(3), mmap(2), munmap(2), mprotect(2), and getpagesize(2)
-
+2. [Illinois CS341 Malloc Tutorial](https://cs341.cs.illinois.edu/coursebook/Malloc?utm_source=chatgpt.com)
+3. [ANU Lab: Building Dynamic Memory Allocators](https://comp.anu.edu.au/courses/comp2310/labs/05-malloc/?utm_source=chatgpt.com#outline)
 # Tools
 - gcc or clang
 - gdb
